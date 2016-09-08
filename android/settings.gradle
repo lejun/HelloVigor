@@ -1,0 +1,3 @@
+rootProject.name = 'HelloVigor'
+
+include ':app'

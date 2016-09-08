@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "es6",
+        "jsx": "react",
+        "outDir": "built",
+        "rootDir": "src",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "filesGlob": [
+        "typings/index.d.ts",
+        "typings/globals/**/*.d.ts",
+        "src/**/*.ts",
+        "src/**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules",
+        ".vscode/launchReactNative.js",
+        "built",
+        "index.android.js",
+        "index.ios.js"
+    ]
+}
