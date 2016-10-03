@@ -1,11 +1,11 @@
 
 
 interface StateThree{
-    name:string;
+    name:string[];
 }
 
 const initState :StateThree ={
-    name:'ly'
+    name:['android','java']
 }
 
 export default function three(state:StateThree = initState,action):StateThree
@@ -13,7 +13,7 @@ export default function three(state:StateThree = initState,action):StateThree
     switch(action.type)
     {
         case 'one':
-        return {name:'nice'};
+        return state;
         default:
         return state;
     }

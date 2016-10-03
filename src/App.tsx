@@ -5,7 +5,13 @@ import Item from './containers/components/Item';
 import InputView from './containers/components/InputView';
 import ListItem from './containers/components/ListItem';
 
-export default class App extends React.Component<any, any>{
+import {connect} from 'react-redux';
+
+interface IProps{
+    todos:string[];
+}
+
+class App extends React.Component<IProps, any>{
     constructor(props: any) {
         super(props);
     }
@@ -14,10 +20,9 @@ export default class App extends React.Component<any, any>{
         return (
             <View>
                 <InputView onAdd={(txt)=>{
-                    this.state.data.push(txt);
-                    this.setState(this.state);
+
                 }}/>
-                <ListItem data={this.state.data}/>
+                <ListItem data={this.props.todos}/>
             </View>
         );
     }
@@ -41,3 +46,13 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     } as React.TextStyle,
 });
+
+function mapState2Props(state):IProps
+{
+    console.log(state);
+    
+    return{
+        todos:state.three
+    }
+}
+export default connect(mapState2Props)(App);
