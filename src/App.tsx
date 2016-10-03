@@ -5,7 +5,7 @@ import Item from './containers/components/Item';
 import InputView from './containers/components/InputView';
 import ListItem from './containers/components/ListItem';
 
-class App extends React.Component<any, any>{
+export default class App extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
     }
