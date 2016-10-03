@@ -1,8 +1,8 @@
-import one from './fore';
-import two from './three';
+import fore from './fore';
+import three from './three';
 import {combineReducers} from 'redux';
 
-export default combineReducers({one,two});
+export default combineReducers({fore,three});
 
 
 

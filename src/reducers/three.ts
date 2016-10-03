@@ -5,7 +5,7 @@ interface StateThree{
 }
 
 const initState :StateThree ={
-    name:['android','java']
+    name:['android','java',"c++++++"]
 }
 
 export default function three(state:StateThree = initState,action):StateThree

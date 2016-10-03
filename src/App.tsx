@@ -52,7 +52,7 @@ function mapState2Props(state):IProps
     console.log(state);
     
     return{
-        todos:state.three
+        todos:state.three.name
     }
 }
 export default connect(mapState2Props)(App);
