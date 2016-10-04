@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,ToastAndroid } from 'react-native';
 
 import Item from './containers/components/Item';
 import InputView from './containers/components/InputView';
@@ -25,8 +25,10 @@ class App extends React.Component<IProps, any>{
                 <InputView onAdd={(txt)=>{
                     this.props.dispatch(addAction(txt));
                 }}/>
-                <ListItem data={this.props.todos} onItemClick={(position) => {
-                    // this.props.dispatch(delAction(position));
+                <ListItem data={this.props.todos} 
+                onItemClick={position => {
+                    this.props.dispatch(delAction(position));
+                    ToastAndroid.show(position,ToastAndroid.LONG);
                 }}/>
             </View>
         );
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
 
 function mapState2Props(state):IProps
 {
-    console.log(state);
+    console.log(" ** app ** ",state.three);
     
     return{
         todos:state.three.todos

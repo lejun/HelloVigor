@@ -8,7 +8,7 @@ const initState :StateThree ={
     todos:['android','java',"c++++++"]
 }
 
-export default function three(state:StateThree = initState,action:ReduxActions.Action<string>):StateThree
+export default function three(state:StateThree = initState,action:ReduxActions.Action<string| number>):StateThree
 {
     switch(action.type)
     {
@@ -16,8 +16,11 @@ export default function three(state:StateThree = initState,action:ReduxActions.A
         console.log("----state: ",state);
         return Object.assign({},state,{todos:[action.payload,...state.todos]});
         case ACTION_DEL:
-        console.log("-----del**",state);
-        return Object.assign({},state,{});
+        console.log("-----del**",state,action.payload);
+        let copyData = Object.assign({},state);
+        let postion = Number(action.payload);
+        copyData.todos.splice(postion,1);
+        return Object.assign({},state,copyData);
         default:
         return state;
     }
