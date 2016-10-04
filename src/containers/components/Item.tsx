@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as RN from 'react-native';
 
-const {View,Text,StyleSheet} = RN; 
+const {View,Text,StyleSheet,TouchableHighlight} = RN; 
 
 interface IItem{
     title:string;
+    onItemClick(position:number);
 }
 
 export default class Item extends React.Component<IItem,any>{
@@ -17,7 +18,10 @@ export default class Item extends React.Component<IItem,any>{
     {
         return(
             <View style={styles.container}>
-                <Text>title : {this.props.title}</Text>
+            <TouchableHighlight onPress={this.props.onItemClick(position)}>
+                    <Text>title : {this.props.title}</Text>
+            </TouchableHighlight>
+            
             </View>
         );
     }

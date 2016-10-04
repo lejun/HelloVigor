@@ -2,10 +2,11 @@ import * as React from 'react';
 import * as RN from 'react-native';
 import Item from './Item';
 
-const {View,ListView,StyleSheet,Text} = RN;
+const {View,ListView,StyleSheet,Text,TouchableHighlight} = RN;
 
 interface IProps{
     data:string[];
+    onItemClick(position):void;
 }
 
 export default class ListItem extends React.Component<IProps,any>{
@@ -27,7 +28,11 @@ export default class ListItem extends React.Component<IProps,any>{
             <ListView
                 dataSource={datasource}
                 renderRow={(rowData,sectionID,rowID)=>{
-                    return <Item title={rowData}/>
+                    return(
+                     <TouchableHighlight onPress={this.props.onItemClick.bind(this,rowID)}>
+                         <Item title={rowData}/>
+                    </TouchableHighlight>
+                    )
                 }}
             />
         );
