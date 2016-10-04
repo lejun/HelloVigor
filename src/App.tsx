@@ -4,11 +4,13 @@ import { View, Text, StyleSheet } from 'react-native';
 import Item from './containers/components/Item';
 import InputView from './containers/components/InputView';
 import ListItem from './containers/components/ListItem';
+import {actionAdd} from './action/Action';
 
 import {connect} from 'react-redux';
 
 interface IProps{
     todos:string[];
+
 }
 
 class App extends React.Component<IProps, any>{
