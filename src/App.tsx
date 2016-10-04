@@ -28,7 +28,6 @@ class App extends React.Component<IProps, any>{
                 <ListItem data={this.props.todos} 
                 onItemClick={position => {
                     this.props.dispatch(delAction(position));
-                    ToastAndroid.show(position,ToastAndroid.LONG);
                 }}/>
             </View>
         );
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
 
 function mapState2Props(state):IProps
 {
-    console.log(" ** app ** ",state.three);
+    console.log(" ** app ** ",state.three.todos);
     
     return{
         todos:state.three.todos
