@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 
 interface IProps{
     todos:string[];
+    dispatch?:Redux.Dispatch<any>
 
 }
 
@@ -22,7 +23,7 @@ class App extends React.Component<IProps, any>{
         return (
             <View>
                 <InputView onAdd={(txt)=>{
-
+                    this.props.dispatch(actionAdd(txt));
                 }}/>
                 <ListItem data={this.props.todos}/>
             </View>
@@ -54,7 +55,7 @@ function mapState2Props(state):IProps
     console.log(state);
     
     return{
-        todos:state.three.name
+        todos:state.three.todos
     }
 }
 export default connect(mapState2Props)(App);
