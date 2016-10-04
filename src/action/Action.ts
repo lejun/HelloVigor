@@ -1,9 +1,5 @@
+import {createAction} from 'redux-actions';
 export const ACTION_ADD = "action_add";
 
-export function actionAdd(txt)
-{
-    return {
-        type:ACTION_ADD,
-        content:txt
-    }
-}
+export let addAction = createAction(ACTION_ADD,txt => txt);
+

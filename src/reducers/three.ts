@@ -8,13 +8,13 @@ const initState :StateThree ={
     todos:['android','java',"c++++++"]
 }
 
-export default function three(state:StateThree = initState,action):StateThree
+export default function three(state:StateThree = initState,action:ReduxActions.Action<string>):StateThree
 {
     switch(action.type)
     {
         case ACTION_ADD:
         console.log("----state: ",state);
-        return Object.assign({},state,{todos:[action.content,...state.todos]});
+        return Object.assign({},state,{todos:[action.payload,...state.todos]});
 
         default:
         return state;
