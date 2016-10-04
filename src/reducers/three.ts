@@ -1,4 +1,4 @@
-import {ACTION_ADD} from '../action/Action'
+import {ACTION_ADD,ACTION_DEL} from '../action/Action'
 
 interface StateThree{
     todos:string[];
@@ -15,7 +15,9 @@ export default function three(state:StateThree = initState,action:ReduxActions.A
         case ACTION_ADD:
         console.log("----state: ",state);
         return Object.assign({},state,{todos:[action.payload,...state.todos]});
-
+        case ACTION_DEL:
+        console.log("-----del**",state);
+        return Object.assign({},state,{});
         default:
         return state;
     }

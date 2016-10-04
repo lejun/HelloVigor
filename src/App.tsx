@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import Item from './containers/components/Item';
 import InputView from './containers/components/InputView';
 import ListItem from './containers/components/ListItem';
-import {addAction} from './action/Action';
+import {addAction,delAction} from './action/Action';
 
 import {connect} from 'react-redux';
 
@@ -25,7 +25,9 @@ class App extends React.Component<IProps, any>{
                 <InputView onAdd={(txt)=>{
                     this.props.dispatch(addAction(txt));
                 }}/>
-                <ListItem data={this.props.todos}/>
+                <ListItem data={this.props.todos} onItemClick={(position) => {
+                    // this.props.dispatch(delAction(position));
+                }}/>
             </View>
         );
     }
