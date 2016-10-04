@@ -14,7 +14,7 @@ export default function three(state:StateThree = initState,action):StateThree
     {
         case ACTION_ADD:
         console.log("----state: ",state);
-        return Object.assign(state,action.content);
+        return Object.assign({},state,{todos:[action.content,...state.todos]});
 
         default:
         return state;
