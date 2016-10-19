@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import * as RN from 'react-native';
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import reducers from './reducers/index';
-import App from './App';
 
-const store = createStore(reducers);
+
+
+const{View,Text} = RN;
+
+
 
 export default class HelloVigor extends Component<any,any> {
 
@@ -16,9 +16,9 @@ export default class HelloVigor extends Component<any,any> {
     render() {
 
         return (
-            <Provider store={store}>
-                <App/>
-            </Provider>
+            <View>
+                <Text>hello saga!!!</Text>
+            </View>
         );
     }
 
