@@ -19,7 +19,7 @@ class App extends React.Component<IProps, any>{
         super(props);
     }
 
-    render() {
+    render() { 
         return (
             <View>
                 <InputView onAdd={(txt)=>{
