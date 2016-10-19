@@ -7,7 +7,7 @@ const {View,Text} = RN;
 
 interface IProps{
     content:string;
-    dispath?:Redux.Dispatch<any>
+    dispatch?:Redux.Dispatch<any>
 }
 class App extends React.Component<IProps,any>{
 
@@ -21,7 +21,7 @@ class App extends React.Component<IProps,any>{
         return(
             <View>
                 <Text onPress={()=>{
-                    this.props.dispath(HelloAction);
+                    this.props.dispatch(HelloAction);
                 }}>this is app!!!! {this.props.content}</Text>
             </View>
         );
