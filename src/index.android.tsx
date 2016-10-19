@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import * as RN from 'react-native';
-
-
-
-const{View,Text} = RN;
+import App from './App';
 
 
 
@@ -16,9 +13,7 @@ export default class HelloVigor extends Component<any,any> {
     render() {
 
         return (
-            <View>
-                <Text>hello saga!!!</Text>
-            </View>
+            <App/>
         );
     }
 
