@@ -5,7 +5,7 @@ import {HelloAction} from './action/HelloAction';
 
 const {View,Text} = RN;
 
-interface IProps{
+interface IProps{  
     content:string;
     dispatch?:Redux.Dispatch<any>
 }
@@ -15,14 +15,14 @@ class App extends React.Component<IProps,any>{
     {
         super(props);
     }
-
+ 
     render()
     {
         return(
             <View>
                 <Text onPress={()=>{
                     this.props.dispatch(HelloAction);
-                }}>this is app!!!! {this.props.content}</Text>
+                }}>this is app!!!! helloHandler {this.props.content}</Text>
             </View>
         );
     }

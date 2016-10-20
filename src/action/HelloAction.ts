@@ -1,6 +1,6 @@
 export const HELLO = "hello";
 
 export const HelloAction = {
-    type:HELLO,
+    type:"nice",
     content:'trello!!!!!'
 }
