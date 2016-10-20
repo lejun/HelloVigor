@@ -12,6 +12,7 @@ interface IProps{
 }
 interface IState{
     dataSource ?: React.ListViewDataSource,
+    data?:string[]
 }
 var width = Dimensions.get('window').width;
 class App extends React.Component<IProps,IState>{
@@ -21,25 +22,31 @@ class App extends React.Component<IProps,IState>{
         super(props);
         var ds = new ListView.DataSource({rowHasChanged:(r1,r2)=> r1 !== r2});
         this.state = {
-            dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+            dataSource: ds.cloneWithRows([]),
+            data:[]
         };
     }
  
     render()
     {
         return(
-            <View>
+            <View style={styles.containerStyle}>
                 <Text onPress={()=>{
                     this.props.dispatch(HelloAction);
                 }}>this is app!!!! helloHandler {this.props.content}</Text>
                 <View style={styles.textInputViewStyle}>
                     <TextInput style={styles.textInputStyle} 
-                    defaultValue="default value" placeholder="place holder" placeholderTextColor="#e3e3e3" onChangeText={(text) => {ToastAndroid.show(text,ToastAndroid.SHORT)}}/>
+                    defaultValue="default value" placeholder="place holder" placeholderTextColor="#e3e3e3" onChangeText={(text) => {
+                        this.state.data.push(text);
+                        this._refreshDs();
+                    }
+                    }/>
                 </View>
                 <ListView
                 dataSource={this.state.dataSource}
                 renderRow={(rowData,id)=><Text
-                    onPress={() => this._refreshDs() }
+                    
+                    onPress={()=> ToastAndroid.show(rowData,ToastAndroid.LONG)}
                     >{rowData}+ {id}</Text>}/>
             </View>
         );
@@ -47,7 +54,8 @@ class App extends React.Component<IProps,IState>{
 
     _refreshDs():void
     {
-        this.setState({dataSource:this.state.dataSource.cloneWithRows(['android','java','ios'])});
+        let data = this.state.data;
+        this.setState({dataSource:this.state.dataSource.cloneWithRows(data)});
     }
 }
 
@@ -61,6 +69,9 @@ function state2props(state):IProps
 }
 
 const styles = StyleSheet.create({
+    containerStyle:{
+        flex:1
+    } as React.ViewStyle,
     textInputViewStyle: {
         //设置宽度减去30将其居中左右便有15的距离
         width: width - 30,
