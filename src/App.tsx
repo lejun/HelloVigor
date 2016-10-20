@@ -19,6 +19,7 @@ class App extends React.Component<IProps,IState>{
     
     constructor(props)
     {
+        
         super(props);
         var ds = new ListView.DataSource({rowHasChanged:(r1,r2)=> r1 !== r2});
         this.state = {
