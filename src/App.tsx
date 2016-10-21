@@ -33,7 +33,6 @@ class App extends React.Component<IProps,IState>{
         return(
             <View style={styles.containerStyle}>
                 <Text onPress={()=>{
-                    this.props.dispatch(loadAction());
                     this.props.dispatch(requestAction());
                 }}>this is app!!!! helloHandler {this.props.content}</Text>
                 <View style={styles.textInputViewStyle}>

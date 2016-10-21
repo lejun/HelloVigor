@@ -5,7 +5,11 @@ import {REQUESET, loadAction,showContentAction} from '../action/HelloAction';
 export function * handler()
 {
     //此 put ,可以理解为 dispatch
+    //push load 效果
+    yield put(loadAction());
+    //请求服务
     const info = yield call(ApiServer._fetchZH,'lejun');   
+    //请求完成
     yield put(showContentAction(info.msg));
     // yield put({type:'hello',payload:info.msg});
 }
