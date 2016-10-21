@@ -1,6 +1,9 @@
-export const HELLO = "hello";
+import {createAction} from 'redux-actions';
 
-export const HelloAction = {
-    type:"nice",
-    content:'trello!!!!!'
-}
+export const HELLO = "nice";
+
+export const HelloAction = createAction(HELLO);
+// export const HelloAction = {
+//     type:"nice",
+//     content:'trello!!!!!'
+// }

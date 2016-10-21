@@ -1,11 +1,13 @@
 import {takeEvery} from 'redux-saga';
 import {put,call} from 'redux-saga/effects';
+import {createAction} from 'redux-actions';
 
 export function * handler()
 {
     //此 put ,可以理解为 dispatch
-    const info = yield call(ApiServer._fetchZH,'lejun');
-    yield put({type:'hello',content:info});
+    const info = yield call(ApiServer._fetchZH,'lejun');    
+
+    yield put(createAction('hello',info.msg));
 }
 
 //此方法用于 监听 'nice' ,如果有传入，则调用 handler 生成器方法
@@ -16,10 +18,10 @@ export function * sagas()
 
 const ApiServer = {
     _fetchZH(user){
-    return fetch(`https://api.github.com/users/${user}`)
-    .then(result => {
-        console.log("------((((((---",result.json());
-        result.json()
-    }).catch(error => error);
+    // return fetch(`https://api.github.com/users/${user}`)
+    return fetch("http://news-at.zhihu.com/api/4/version/android/2.3.0")
+    // lambal 表达式，没有语句块{} 则表示有返回值
+    .then(result => result.json())
+    .catch(error => error);
     } 
 }
