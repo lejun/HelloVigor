@@ -1,4 +1,4 @@
-import {HELLO} from '../action/HelloAction';
+import {REQUESET,LOADING,USER} from '../action/HelloAction';
 import * as Redux from 'redux';
 const {combineReducers} = Redux;
 
@@ -11,7 +11,9 @@ const initState:IState = {
 export function helloHandler(state:IState = initState,action:ReduxActions.Action<string>):IState{
     switch(action.type)
     {
-        case HELLO:
+        case LOADING:
+        return Object.assign({},state,{content:'loading-----'});
+        case USER:
             return Object.assign({},state,{content:action.payload});
         default:
         return state;

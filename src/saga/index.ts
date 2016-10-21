@@ -1,20 +1,21 @@
 import {takeEvery} from 'redux-saga';
 import {put,call} from 'redux-saga/effects';
-import {createAction} from 'redux-actions';
+import {REQUESET, loadAction,showContentAction} from '../action/HelloAction';
 
 export function * handler()
 {
     //此 put ,可以理解为 dispatch
-    const info = yield call(ApiServer._fetchZH,'lejun');    
-
-    yield put(createAction('hello',info.msg));
+    const info = yield call(ApiServer._fetchZH,'lejun');   
+    yield put(showContentAction(info.msg));
+    // yield put({type:'hello',payload:info.msg});
 }
 
 //此方法用于 监听 'nice' ,如果有传入，则调用 handler 生成器方法
 export function * sagas()
 {
-    yield * takeEvery("nice",handler);
+    yield * takeEvery(REQUESET,handler);
 }
+
 
 const ApiServer = {
     _fetchZH(user){

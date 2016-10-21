@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as RN from 'react-native';
 import {connect} from 'react-redux';
-import {HelloAction} from './action/HelloAction';
+import {requestAction,loadAction} from './action/HelloAction';
 var Dimensions = require('Dimensions');
 
 const {View,Text,TextInput,StyleSheet,Platform,ToastAndroid,ListView} = RN;
@@ -33,7 +33,8 @@ class App extends React.Component<IProps,IState>{
         return(
             <View style={styles.containerStyle}>
                 <Text onPress={()=>{
-                    this.props.dispatch(HelloAction);
+                    this.props.dispatch(loadAction());
+                    this.props.dispatch(requestAction());
                 }}>this is app!!!! helloHandler {this.props.content}</Text>
                 <View style={styles.textInputViewStyle}>
                     <TextInput style={styles.textInputStyle} 
